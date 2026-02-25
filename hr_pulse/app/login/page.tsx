@@ -13,7 +13,7 @@ export default function LoginPage() {
         <div className="w-full md:w-1/2 p-8 md:p-12">
           <div className="flex items-center gap-2 mb-8">
             <div className="w-6 h-6 bg-indigo-500 rounded-full"></div>
-            <span className="font-bold text-indigo-900 uppercase tracking-tighter">Logo</span>
+            <span className="font-bold text-indigo-900 uppercase tracking-tighter">HR-Pulse</span>
           </div>
 
           <h2 className="text-3xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">Welcome Back</h2>
@@ -52,7 +52,8 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-8 text-center text-sm text-slate-500">
-            Don't have an account? <a href="#" className="text-indigo-600 font-bold">Register</a>
+            Don't have an account? 
+            <a href="#" className="text-indigo-600 font-bold">Register</a>
           </p>
         </div>
 
@@ -68,10 +69,7 @@ export default function LoginPage() {
                 <div className="h-1 w-2/3 bg-slate-100"></div>
               </div>
             </div>
-            <h3 className="text-xl font-bold text-indigo-900 uppercase">Hire the Best</h3>
-            <p className="text-indigo-400 text-sm mt-2 max-w-[200px] mx-auto">
-              Join thousands of recruiters finding talent every day.
-            </p>
+            <h3 className="text-xl font-bold text-indigo-900 uppercase">HR-Pulse | AI SOLUTION</h3>
           </div>
           
           {/* Subtle Decorative Wave at the bottom right of this panel */}
