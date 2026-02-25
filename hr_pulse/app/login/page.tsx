@@ -62,12 +62,14 @@ export default function LoginPage() {
           <div className="text-center z-10">
             <div className="mb-6 inline-block p-4 bg-white rounded-2xl shadow-sm">
               {/* This represents the "CV/Profile" icon from your image */}
-              <div className="w-16 h-20 border-2 border-indigo-100 rounded-md relative flex flex-col p-2 gap-1">
-                <div className="w-6 h-6 rounded-full bg-indigo-200 mx-auto mb-1"></div>
-                <div className="h-1 w-full bg-slate-100"></div>
-                <div className="h-1 w-full bg-slate-100"></div>
-                <div className="h-1 w-2/3 bg-slate-100"></div>
-              </div>
+              <div className="relative w-full max-w-lg aspect-square bg-transparent flex items-center justify-center">
+                    <img 
+                        src="/illustration-placeholder.png" 
+                        alt="Recruitment Illustration" 
+                        className="w-full h-auto object-contain"
+                    />
+                            
+                </div>
             </div>
             <h3 className="text-xl font-bold text-indigo-900 uppercase">HR-Pulse | AI SOLUTION</h3>
           </div>
