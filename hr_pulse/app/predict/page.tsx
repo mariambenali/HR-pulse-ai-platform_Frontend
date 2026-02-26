@@ -6,25 +6,45 @@ export default function SalaryDashboard() {
   const [isPredicting, setIsPredicting] = useState(false);
   const [prediction, setPrediction] = useState<number | null>(null);
 
-  const handlePredict = (e: React.FormEvent) => {
+  const handlePredict = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsPredicting(true);
+  
+    const BASE_URL = "http://127.0.0.1:8000";
+    const endpoint = `${BASE_URL}/salary_predict`;
+  
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries()) as any;
+  
+    // Conversion des types numériques
+    payload.Rating = parseFloat(payload.Rating) || 0;          // || 0 permet d’éviter que le backend reçoive NaN
+    payload.log_revenue = parseFloat(payload.log_revenue) || 0;
+    payload.company_age = parseFloat(payload.company_age) || 0;
+  
+    const token = localStorage.getItem("token");
+  
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json", 
+          "Authorization": `Bearer ${token}` 
+        },
+        body: JSON.stringify(payload),
+      });
 
-    const BASE_URL = "http://127.0.0.1:8000"; // URl fastapi
-
-    const endpoint = isPredicting ? `${BASE_URL}/salary_predict`
-    
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    // Simulate API call to ML model
-    setTimeout(() => {
-      setPrediction(125000); 
+      if (!response.ok) {
+        throw new Error("Erreur API");
+      }
+  
+      const data = await response.json();
+      setPrediction(data.predicted_salary);
+    } catch (error) {
+      console.error("Erreur API:", error);
+    } finally {
       setIsPredicting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -54,53 +74,67 @@ export default function SalaryDashboard() {
               
               {/* Fields */}
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-400 uppercase">Rating (1-5)</label>
-                <input type="number" step="0.1" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500" placeholder="4.5" />
+                <label className="text-xs font-bold text-slate-400 uppercase" >Rating (1-5)</label>
+                <input name="Rating" type="number" step="0.1" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900" placeholder="3.1" />
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-400 uppercase">Company Name</label>
-                <input type="text" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500" placeholder="TechCorp" />
+                <input name="Company_Name" type="text" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900" placeholder="healthfirst" />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-400 uppercase">Industry / Sector</label>
-                <select className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500">
-                  <option>Information Technology</option>
-                  <option>Finance</option>
-                  <option>Healthcare</option>
-                </select>
+                <label className="text-xs font-bold text-slate-400 uppercase">Industry</label>
+                <input name="Industry" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900"/>
+                
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-400 uppercase">Sector</label>
+                <input name="Sector" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900"/>
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-400 uppercase">Seniority</label>
-                <select className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500">
-                  <option>Junior</option>
-                  <option>Mid-Level</option>
-                  <option>Senior</option>
-                  <option>Executive</option>
+                <select name="seniority" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900">
+                  <option>junior</option>
+                  <option>senior</option>
+                  <option>executive</option>
                 </select>
               </div>
 
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-400 uppercase">Job Role</label>
+                <input name="job_role" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900"/>
+                
+              </div>
+
               <div className="space-y-1 md:col-span-2">
-                <label className="text-xs font-bold text-slate-400 uppercase">Job Role & Key Skills</label>
-                <input type="text" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500" placeholder="React, Python, AWS, Data Analysis..." />
+                <label className="text-xs font-bold text-slate-400 uppercase">Skills</label>
+                <input name="skills" type="text" 
+                        className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900" 
+                        placeholder="React, Python, AWS, Data Analysis..." />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-400 uppercase">Log Revenue / Age</label>
+                <label className="text-xs font-bold text-slate-400 uppercase ">Log Revenue</label>
                 <div className="flex gap-2">
-                   <input type="number" className="w-1/2 p-3 bg-slate-50 rounded-xl border-none" placeholder="Rev" />
-                   <input type="number" className="w-1/2 p-3 bg-slate-50 rounded-xl border-none" placeholder="Age" />
+                   <input name="log_revenue" type="number" step="0.1" className="w-1/2 p-3 bg-slate-50 rounded-xl border-none  text-slate-900" placeholder="Rev" />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-400 uppercase ">Age</label>
+                <div className="flex gap-2">
+                   <input name="company_age" type="number" className="w-1/2 p-3 bg-slate-50 rounded-xl border-none  text-slate-900" placeholder="Age" />
                 </div>
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-slate-400 uppercase">Company Size</label>
-                <select className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500">
-                  <option>Small (1-50)</option>
-                  <option>Medium (51-500)</option>
-                  <option>Large (500+)</option>
+                <select name="size_category" className="w-full p-3 bg-slate-50 rounded-xl border-none focus:ring-2 focus:ring-indigo-500  text-slate-900">
+                  <option>small</option>
+                  <option>medium</option>
+                  <option>large</option>
                 </select>
               </div>
 

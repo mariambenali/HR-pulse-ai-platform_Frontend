@@ -8,6 +8,7 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+
   // États pour les champs du formulaire
   const [formData, setFormData] = useState({
     email: '',
@@ -22,12 +23,24 @@ export default function AuthPage() {
     const endpoint = isRegister ? `${BASE_URL}/register` : `${BASE_URL}/login`; 
 
 
+    // ✅ Ici on définit le payload
+    const payload = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
       });
+
+      const data = await response.json();
+
+      // stocker le token dans localStorage
+      localStorage.setItem("token", data.access_token);
 
       if (response.ok) {
         // Si succès, on redirige vers la page predict
