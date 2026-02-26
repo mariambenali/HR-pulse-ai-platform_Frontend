@@ -9,6 +9,17 @@ export default function SalaryDashboard() {
   const handlePredict = (e: React.FormEvent) => {
     e.preventDefault();
     setIsPredicting(true);
+
+    const BASE_URL = "http://127.0.0.1:8000"; // URl fastapi
+
+    const endpoint = isPredicting ? `${BASE_URL}/salary_predict`
+    
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
     // Simulate API call to ML model
     setTimeout(() => {
       setPrediction(125000); 

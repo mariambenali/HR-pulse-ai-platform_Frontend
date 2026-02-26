@@ -12,19 +12,6 @@ export default function HomePage() {
         <title>HR SOLUTION| Office Work</title>
       </Head>
 
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-12 py-6">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-indigo-500 rounded-full"></div>
-          <span className="font-bold tracking-tight text-indigo-900 uppercase">HR-Pulse</span>
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
-          <a href="#" className="hover:text-indigo-600 transition">HOME</a>
-          <a href="#" className="px-4 py-1 bg-indigo-500 text-white rounded-full">PAGE</a>
-          <a href="#" className="hover:text-indigo-600 transition">ABOUT</a>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <main className="relative flex flex-col md:flex-row items-center px-12 pt-20 pb-32 overflow-hidden">
         {/* Left Content */}

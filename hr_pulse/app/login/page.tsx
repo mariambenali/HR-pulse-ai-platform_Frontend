@@ -17,10 +17,10 @@ export default function AuthPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const BASE_URL = "http://127.0.0.1:8000";
-    // Définir l'URL selon le mode (Azure Endpoint)
+    const BASE_URL = "http://127.0.0.1:8000"; // URl fastapi
+
     const endpoint = isRegister ? `${BASE_URL}/register` : `${BASE_URL}/login`; 
-    // Remplacez par votre URL Azure réelle, ex: https://votre-app-azure.azurewebsites.net/api/register
+
 
     try {
       const response = await fetch(endpoint, {
@@ -30,19 +30,20 @@ export default function AuthPage() {
       });
 
       if (response.ok) {
-        // Si succès, on redirige vers le dashboard
-        router.push('/dashboard');
+        // Si succès, on redirige vers la page predict
+        router.push('/predict');
       } else {
         alert("Erreur lors de l'authentification");
       }
     } catch (error) {
-      console.error("Erreur Azure:", error);
+      console.error("Erreur server:", error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
+    
     <div className="min-h-screen flex items-center justify-center bg-slate-50 relative overflow-hidden p-4">
       
       {/* Forme violette en arrière-plan (Style HR-Pulse) */}
@@ -65,18 +66,12 @@ export default function AuthPage() {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {isRegister && (
-              <div>
-                <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Nom Complet</label>
-              </div>
-            )}
-
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Email</label>
               <input 
                 type="email" 
                 required
-                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition text-slate-900"
                 placeholder="rh@exemple.com"
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
@@ -87,7 +82,7 @@ export default function AuthPage() {
               <input 
                 type="password" 
                 required
-                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition text-slate-900"
                 placeholder="••••••••"
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
               />
