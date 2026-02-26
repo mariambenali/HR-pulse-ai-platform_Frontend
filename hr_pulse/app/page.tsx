@@ -1,6 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 
+
+
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-800">
@@ -56,7 +59,7 @@ export default function HomePage() {
             className="w-full h-auto"
           >
             <path 
-              fill="#EEF2FF" /* Changed to a light indigo/purple to match your image */
+              fill="#EEF2FF" 
               fillOpacity="1" 
               d="M0,64L24,96C48,128,96,192,144,218.7C192,245,240,235,288,208C336,181,384,139,432,122.7C480,107,528,117,576,112C624,107,672,85,720,80C768,75,816,85,864,117.3C912,149,960,203,1008,229.3C1056,256,1104,256,1152,261.3C1200,267,1248,277,1296,256C1344,235,1392,181,1416,154.7L1440,128L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"
             ></path>

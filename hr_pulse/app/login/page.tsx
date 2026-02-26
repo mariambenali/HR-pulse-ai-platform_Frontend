@@ -1,82 +1,130 @@
-import React from 'react';
+"use client";
 
-export default function LoginPage() {
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function AuthPage() {
+  const [isRegister, setIsRegister] = useState(false); // Bascule entre Login et Register
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  // États pour les champs du formulaire
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    const BASE_URL = "http://127.0.0.1:8000";
+    // Définir l'URL selon le mode (Azure Endpoint)
+    const endpoint = isRegister ? `${BASE_URL}/register` : `${BASE_URL}/login`; 
+    // Remplacez par votre URL Azure réelle, ex: https://votre-app-azure.azurewebsites.net/api/register
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Si succès, on redirige vers le dashboard
+        router.push('/dashboard');
+      } else {
+        alert("Erreur lors de l'authentification");
+      }
+    } catch (error) {
+      console.error("Erreur Azure:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 relative overflow-hidden p-4">
       
-      {/* Background Wave/Blob Shape (Matching your style) */}
-      <div className="absolute top-0 right-0 -z-0 w-1/2 h-full bg-indigo-100 rounded-bl-[300px] opacity-60 hidden md:block"></div>
+      {/* Forme violette en arrière-plan (Style HR-Pulse) */}
+      <div className="absolute top-0 right-0-z-0 w-1/2 h-full bg-indigo-100 rounded-bl-[300px] opacity-60 hidden md:block"></div>
 
-      <div className="z-10 bg-white shadow-2xl rounded-3xl flex max-w-4xl w-full overflow-hidden mx-4">
+      <div className="z-10 bg-white shadow-2xl rounded-3xl flex max-w-4xl w-full overflow-hidden">
         
-        {/* Left Side: Form */}
+        {/* Côté Gauche : Formulaire */}
         <div className="w-full md:w-1/2 p-8 md:p-12">
           <div className="flex items-center gap-2 mb-8">
             <div className="w-6 h-6 bg-indigo-500 rounded-full"></div>
             <span className="font-bold text-indigo-900 uppercase tracking-tighter">HR-Pulse</span>
           </div>
 
-          <h2 className="text-3xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">Welcome Back</h2>
-          <p className="text-slate-500 mb-8 text-sm">Please enter your details to sign in.</p>
+          <h2 className="text-3xl font-extrabold text-slate-800 mb-2 uppercase tracking-tight">
+            {isRegister ? "Créer un compte" : "Bon retour"}
+          </h2>
+          <p className="text-slate-500 mb-8 text-sm">
+            {isRegister ? "Inscrivez-vous pour accéder à nos outils IA." : "Connectez-vous pour faire vos prediction."}
+          </p>
 
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {isRegister && (
+              <div>
+                <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Nom Complet</label>
+              </div>
+            )}
+
             <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Email Address</label>
+              <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Email</label>
               <input 
                 type="email" 
-                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-transparent focus:bg-white focus:border-indigo-500 focus:ring-0 transition" 
-                placeholder="name@company.com"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition"
+                placeholder="rh@exemple.com"
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Password</label>
+              <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Mot de passe</label>
               <input 
                 type="password" 
-                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-transparent focus:bg-white focus:border-indigo-500 focus:ring-0 transition" 
+                required
+                className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition"
                 placeholder="••••••••"
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
               />
             </div>
 
-            <div className="flex items-center justify-between text-xs font-medium">
-              <label className="flex items-center gap-2 text-slate-500 cursor-pointer">
-                <input type="checkbox" className="rounded text-indigo-500 focus:ring-indigo-500" />
-                Remember me
-              </label>
-              <a href="#" className="text-indigo-600 hover:underline">Forgot Password?</a>
-            </div>
-
-            <button className="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition transform hover:-translate-y-0.5">
-              Sign In
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition transform hover:-translate-y-0.5"
+            >
+              {loading ? "Chargement..." : isRegister ? "S'inscrire" : "Se connecter"}
             </button>
           </form>
 
           <p className="mt-8 text-center text-sm text-slate-500">
-            Don't have an account? 
-            <a href="#" className="text-indigo-600 font-bold">Register</a>
+            {isRegister ? "Déjà un compte ?" : "Pas encore de compte ?"} 
+            <button 
+              onClick={() => setIsRegister(!isRegister)} 
+              className="ml-2 text-indigo-600 font-bold hover:underline"
+            >
+              {isRegister ? "Se connecter" : "S'inscrire"}
+            </button>
           </p>
         </div>
 
-        {/* Right Side: Visual (Hidden on mobile) */}
-        <div className="hidden md:flex md:w-1/2 bg-indigo-50 items-center justify-center p-12 relative">
-          <div className="text-center z-10">
-            <div className="mb-6 inline-block p-4 bg-white rounded-2xl shadow-sm">
-              {/* This represents the "CV/Profile" icon from your image */}
-              <div className="relative w-full max-w-lg aspect-square bg-transparent flex items-center justify-center">
-                    <img 
-                        src="/illustration-placeholder.png" 
-                        alt="Recruitment Illustration" 
-                        className="w-full h-auto object-contain"
-                    />
-                            
-                </div>
-            </div>
-            <h3 className="text-xl font-bold text-indigo-900 uppercase">HR-Pulse | AI SOLUTION</h3>
-          </div>
+        {/* Côté Droit : Visuel */}
+        <div className="hidden md:flex md:w-1/2 bg-indigo-50 items-center justify-center p-12 relative text-center">
           
-          {/* Subtle Decorative Wave at the bottom right of this panel */}
-          <div className="absolute bottom-0 right-0 w-full opacity-30">
-             {/* Your SVG path can go here */}
+          <div className="z-10">
+            <img 
+                src="/illustration-placeholder1.png" 
+                alt="Recruitment Illustration" 
+                className="w-full h-auto object-contain"
+              />
+             <p className="text-indigo-400 text-sm mt-2 max-w-[200px] mx-auto italic">
+               Transformer les données brutes en décisions intelligentes.
+             </p>
           </div>
         </div>
       </div>
