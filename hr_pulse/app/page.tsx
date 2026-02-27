@@ -6,230 +6,254 @@ import HowItPulseIllustration from "@/components/HowItPulseIllustration";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800">
+    <div className="min-h-screen bg-mesh font-sans text-slate-800 overflow-x-hidden">
       <Head>
-        <title>HR-Pulse | AI Recruitment Solutions</title>
-        <meta name="description" content="Modernize your recruitment process with HR-Pulse's AI-driven talent insights and salary prediction tools." />
+        <title>HR-Pulse.AI | Precision Talent Intelligence</title>
+        <meta name="description" content="Enterprise AI recruitment and HR analytics platform for data-driven teams." />
       </Head>
 
       <Navbar />
 
+      {/* Floating Decorative Blobs */}
+      <div className="blob top-[-10%] left-[-10%] scale-150 opacity-40"></div>
+      <div className="blob bottom-[10%] right-[-10%] scale-125 opacity-30 animation-delay-2000" style={{ background: 'linear-gradient(180deg, rgba(34, 211, 238, 0.15) 0%, rgba(79, 70, 229, 0.1) 100%)' }}></div>
+
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden bg-white">
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <span className="inline-block px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-sm font-bold uppercase tracking-wider mb-6 animate-fade-in">
-                Next-Gen HR Technology
-              </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-6">
-                Redefining <span className="text-gradient">Talent</span> Acquisition
+          <div className="flex flex-col lg:flex-row items-center gap-20">
+            <div className="lg:w-1/2 text-center lg:text-left animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50/80 backdrop-blur-sm text-indigo-700 text-xs font-bold uppercase tracking-[0.2em] mb-8 border border-indigo-100/50 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+                </span>
+                Intelligence Stratégique RH
+              </div>
+              <h1 className="text-6xl md:text-8xl font-extrabold text-slate-900 leading-[1.1] mb-8 tracking-tight font-display">
+                Precision <span className="text-gradient">Talent</span> Analytics
               </h1>
-              <p className="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                HR-Pulse transforms raw data into intelligent insights. From automated salary predictions to deep skill analysis, we empower HR teams to make data-driven decisions.
+              <p className="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
+                Optimize your human capital with enterprise-grade AI. Predict salaries, map skills, and unlock real-time workforce insights in seconds.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <button className="px-10 py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl shadow-indigo-200 hover:bg-indigo-700 transition-all transform hover:-translate-y-1">
-                  Start Projecting
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
+                <button className="px-12 py-5 bg-indigo-600 text-white font-bold rounded-2xl shadow-2xl shadow-indigo-300/40 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all duration-300">
+                  Deploy AI Console
                 </button>
-                <button className="px-10 py-4 bg-white text-indigo-600 font-bold rounded-2xl border-2 border-indigo-100 hover:border-indigo-600 hover:bg-slate-50 transition-all transform hover:-translate-y-1">
-                  View Demo
+                <button className="px-12 py-5 bg-white/50 backdrop-blur-md text-slate-900 font-bold rounded-2xl border border-white/80 hover:bg-white hover:border-indigo-200 transition-all shadow-xl shadow-slate-200/20">
+                  Interactive Demo
                 </button>
               </div>
-              <div className="mt-12 flex items-center justify-center lg:justify-start gap-8 opacity-50 grayscale hover:grayscale-0 transition-all">
-                <span className="font-bold text-slate-400">TRUSTED BY</span>
-                <div className="flex gap-6">
-                  {/* Mock logos */}
-                  <div className="w-8 h-8 bg-slate-400 rounded-lg"></div>
-                  <div className="w-8 h-8 bg-slate-400 rounded-full"></div>
-                  <div className="w-8 h-8 bg-slate-400 rounded-md rotate-45"></div>
+
+              {/* Stats Bar */}
+              <div className="mt-16 flex items-center justify-center lg:justify-start gap-12 border-t border-slate-200/50 pt-10">
+                <div>
+                  <div className="text-3xl font-extrabold text-slate-900 font-display">98%</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Accuracy</div>
+                </div>
+                <div className="w-px h-10 bg-slate-200"></div>
+                <div>
+                  <div className="text-3xl font-extrabold text-slate-900 font-display">0.8s</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Latency</div>
+                </div>
+                <div className="w-px h-10 bg-slate-200"></div>
+                <div>
+                  <div className="text-3xl font-extrabold text-slate-900 font-display">12M+</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Data Points</div>
                 </div>
               </div>
             </div>
-            <div className="lg:w-1/2 relative">
-              <div className="relative z-10 animate-float max-w-[560px] mx-auto">
+
+            <div className="lg:w-1/2 relative space-y-8">
+              {/* Floating Dashboard Card Mockup Top */}
+
+
+              <div className="relative z-10 max-w-[600px] mx-auto transition-transform duration-700 hover:scale-[1.02]">
                 <HeroIllustration />
               </div>
+
               {/* Background Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-indigo-100 rounded-full blur-[100px] opacity-40 -z-10"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[300%] bg-indigo-400/20 rounded-full blur-[120px] -z-10"></div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Waves Animation */}
-        <div className="wave-container scale-y-150">
-          <svg className="wave wave-1" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#f8fafc" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-          </svg>
-          <svg className="wave wave-2" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="rgba(238,242,255,0.7)" d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,122.7C624,128,720,192,816,202.7C912,213,1008,171,1104,138.7C1200,107,1296,85,1344,74.7L1392,64L1392,320L1344,320C1296,320,1200,320,1104,320C1008,320,912,320,816,320C720,320,624,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-          </svg>
-          <svg className="wave wave-3" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="rgba(238,242,255,0.5)" d="M0,64L48,85.3C96,107,192,149,288,154.7C384,160,480,128,576,112C672,96,768,96,864,122.7C960,149,1056,203,1152,229.3C1248,256,1344,256,1392,256L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-          </svg>
+      {/* Trust Section */}
+      <section className="py-12 glass border-y border-white/50">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-between gap-12 grayscale opacity-30 hover:grayscale-0 hover:opacity-80 transition-all duration-500">
+            <span className="text-xl font-black text-slate-400 tracking-tighter">TECHLEAD</span>
+            <span className="text-xl font-black text-slate-400 tracking-tighter">DATACORE</span>
+            <span className="text-xl font-black text-slate-400 tracking-tighter">QUASAR</span>
+            <span className="text-xl font-black text-slate-400 tracking-tighter">NEURALIS</span>
+            <span className="text-xl font-black text-slate-400 tracking-tighter">SYNERGY</span>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Powerful AI Features</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto italic">Everything you need to modernize your HR workflow.</p>
+      <section className="py-32 relative overflow-hidden" id="features">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-24 animate-fade-in">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 font-display tracking-tight">Full-Stack AI <span className="text-gradient">Capabilities</span></h2>
+            <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-light">
+              One ecosystem to manage your entire talent lifecycle with mathematical precision.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Feature 1 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+            <div className="p-10 glass rounded-[40px] card-dashboard border border-white/80 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-700 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-indigo-200 group-hover:rotate-6 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Salary Prediction</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Utilize advanced machine learning models to predict market-accurate salaries based on skills, experience, and industry trends.
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 font-display">Salary Projection</h3>
+              <p className="text-slate-500 leading-relaxed font-light mb-6">
+                Market-accurate salary forecasting using 12M+ data points across geo-locations and niche skillsets.
               </p>
+              <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Core Module</span>
+                <span className="text-xs font-bold text-slate-300">v4.2</span>
+              </div>
             </div>
 
             {/* Feature 2 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg>
+            <div className="p-10 glass rounded-[40px] card-dashboard border border-white/80 group mt-8 md:mt-0">
+              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-700 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-cyan-200 group-hover:rotate-6 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Skill Analysis</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Automatically extract and analyze candidate skills from resumes to find the perfect match for your specific requirements.
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 font-display">Neural Skill Mapping</h3>
+              <p className="text-slate-500 leading-relaxed font-light mb-6">
+                Map candidate potentials with deep learning. Identify hidden skills and cultural alignment automatically.
               </p>
+              <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-bold text-cyan-600 uppercase tracking-widest">Active NLP</span>
+                <span className="text-xs font-bold text-slate-300">Live</span>
+              </div>
             </div>
 
             {/* Feature 3 */}
-            <div className="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-              <div className="w-14 h-14 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+            <div className="p-10 glass rounded-[40px] card-dashboard border border-white/80 group">
+              <div className="w-16 h-16 bg-gradient-to-br from-slate-700 to-slate-900 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-slate-300 group-hover:rotate-6 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Talent Insights</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Gain deep insights into your talent pool with structured data visualization and intelligent classification.
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 font-display">Predictive Insights</h3>
+              <p className="text-slate-500 leading-relaxed font-light mb-6">
+                Actionable HR intelligence. Predict turnover rates and future hiring needs before they arise.
               </p>
+              <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">Enterprise Only</span>
+                <span className="text-xs font-bold text-slate-300">Custom</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-white" id="how-it-works">
+      <section className="py-32 relative" id="how-it-works">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 relative">
-              <div className="relative z-10 animate-float max-w-[500px] mx-auto">
+          <div className="glass p-16 md:p-24 rounded-[60px] flex flex-col lg:flex-row items-center gap-24 overflow-hidden border border-white/80">
+            <div className="lg:w-1/2 relative order-2 lg:order-1">
+              <div className="relative z-10 animate-float max-w-[500px] mx-auto drop-shadow-[0_35px_35px_rgba(79,70,229,0.15)]">
                 <HowItPulseIllustration />
               </div>
-              {/* Decorative Circle Background */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-blue-50/50 rounded-full blur-3xl -z-10"></div>
+              {/* Background Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-blue-100/40 rounded-full blur-[100px] -z-10"></div>
             </div>
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8">How it <span className="text-gradient">Pulse</span></h2>
-              <ul className="space-y-8">
-                <li className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white font-bold rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">1</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-2">Ingest Data</h4>
-                    <p className="text-slate-600">Upload resumes or job descriptions in various formats (PDF, DOCX, etc.) directly into our neural analyzer.</p>
+            <div className="lg:w-1/2 order-1 lg:order-2">
+              <div className="text-xs font-black text-indigo-600 uppercase tracking-[0.3em] mb-4">Neural Workflow</div>
+              <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-10 font-display tracking-tight">How it <span className="text-gradient">Pulse</span></h2>
+              <div className="space-y-12">
+                {[
+                  { id: "01", title: "Ingestion Data", desc: "Automate raw data harvesting across global recruitment channels using secure neural endpoints." },
+                  { id: "02", title: "AI Synapse Processing", desc: "Proprietary NLP engines restructure unstructured talent data into multidimensional skill vectors." },
+                  { id: "03", title: "Strategic Synthesis", desc: "Generate board-ready insights and predictive models to de-risk high-stakes hiring decisions." }
+                ].map((step, idx) => (
+                  <div key={idx} className="flex gap-8 group">
+                    <div className="flex-shrink-0 w-16 h-16 rounded-[24px] bg-white shadow-xl shadow-slate-100 flex items-center justify-center text-2xl font-black text-slate-900 font-display border border-slate-50 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                      {step.id}
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 font-display">{step.title}</h4>
+                      <p className="text-slate-500 font-light leading-relaxed">{step.desc}</p>
+                    </div>
                   </div>
-                </li>
-                <li className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white font-bold rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">2</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-2">AI Processing</h4>
-                    <p className="text-slate-600">Our NLP models parse and structure unstructured text into clean, searchable, and intelligent data entities.</p>
-                  </div>
-                </li>
-                <li className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-600 text-white font-bold rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">3</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-slate-900 mb-2">Make Decisions</h4>
-                    <p className="text-slate-600">Get predictive analysis on salaries, skills, and culture-fit to close the perfect talent match faster than ever.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-24 bg-indigo-900 text-white overflow-hidden relative">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">Built for Modern <br /><span className="text-indigo-400">HR Teams</span></h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-indigo-500 mt-1 flex-shrink-0"></div>
-                  <p className="text-indigo-100 italic"> "HR-Pulse allowed us to reduce our screening time by 60% while improving candidate quality."</p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-indigo-500 mt-1 flex-shrink-0"></div>
-                  <p className="text-indigo-100 italic">"The salary prediction model is scary accurate. It's our go-to tool for budget planning."</p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-              <div className="p-6 bg-indigo-800/50 rounded-3xl border border-indigo-700">
-                <div className="text-3xl font-bold mb-2">98%</div>
-                <div className="text-indigo-300 text-sm uppercase font-bold tracking-widest">Accuracy</div>
-              </div>
-              <div className="p-6 bg-indigo-800/50 rounded-3xl border border-indigo-700 mt-8">
-                <div className="text-3xl font-bold mb-2">2k+</div>
-                <div className="text-indigo-300 text-sm uppercase font-bold tracking-widest">Analyses</div>
-              </div>
-              <div className="p-6 bg-indigo-800/50 rounded-3xl border border-indigo-700 -mt-8">
-                <div className="text-3xl font-bold mb-2">15m</div>
-                <div className="text-indigo-200 text-sm uppercase font-bold tracking-widest">Onboarding</div>
-              </div>
-              <div className="p-6 bg-indigo-800/50 rounded-3xl border border-indigo-700">
-                <div className="text-3xl font-bold mb-2">24/7</div>
-                <div className="text-indigo-300 text-sm uppercase font-bold tracking-widest">AI Support</div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-        {/* Decorative background element */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-800 skew-x-12 translate-x-1/2"></div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className="py-32">
         <div className="container mx-auto px-6">
-          <div className="glass p-12 md:p-20 rounded-[40px] text-center relative overflow-hidden">
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6">Ready to Pulse?</h2>
-              <p className="text-lg text-slate-600 mb-10 max-w-2xl mx-auto">
-                Join hundreds of forward-thinking companies already using HR-Pulse to build their dream teams.
-              </p>
-              <button className="px-12 py-5 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition transform hover:scale-105 shadow-2xl">
-                Get Started for Free
-              </button>
+          <div className="relative p-12 md:p-24 rounded-[60px] text-center overflow-hidden bg-slate-900">
+            {/* Abstract background for CTA */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-30 select-none pointer-events-none">
+              <div className="blob top-[-50%] left-[-50%] scale-150 rotate-45" style={{ background: 'radial-gradient(circle, #4f46e5 0%, transparent 70%)', filter: 'blur(120px)' }}></div>
+              <div className="blob bottom-[-50%] right-[-50%] scale-150 -rotate-45" style={{ background: 'radial-gradient(circle, #22d3ee 0%, transparent 70%)', filter: 'blur(120px)' }}></div>
             </div>
-            {/* Background Decorations */}
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-100 rounded-full blur-3xl opacity-50"></div>
+
+            <div className="relative z-10">
+              <h2 className="text-5xl md:text-8xl font-extrabold text-white mb-8 font-display tracking-tight">Ready to <span className="text-indigo-400 italic">Pulse?</span></h2>
+              <p className="text-xl text-slate-400 mb-14 max-w-2xl mx-auto font-light leading-relaxed">
+                Join the global elite of data-driven HR teams. Start your high-performance transformation today.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-6">
+                <button className="px-14 py-6 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition transform hover:scale-105 active:scale-95 shadow-2xl shadow-indigo-500/30">
+                  Begin Free Evaluation
+                </button>
+                <button className="px-14 py-6 bg-white/10 backdrop-blur-md text-white border border-white/20 font-bold rounded-2xl hover:bg-white/20 transition transform hover:scale-105 active:scale-95">
+                  Request Architect Call
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-white border-t border-slate-100">
+      <footer className="py-20 border-t border-slate-200">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-indigo-500 rounded-full"></div>
-              <span className="font-bold text-indigo-900 uppercase tracking-tighter">HR-Pulse</span>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-2 mb-8 scale-110 origin-left">
+                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-100">
+                  <div className="w-5 h-5 bg-white rounded-full opacity-80"></div>
+                </div>
+                <span className="font-extrabold text-2xl tracking-tight text-slate-900 font-display uppercase">HR-Pulse<span className="text-indigo-600">.AI</span></span>
+              </div>
+              <p className="text-slate-400 max-w-xs leading-loose font-light">
+                Enterprise-grade talent intelligence platform powered by advanced NLP and neural networking.
+              </p>
             </div>
-            <div className="flex gap-8 text-sm font-medium text-slate-500">
-              <a href="#" className="hover:text-indigo-600 transition">Privacy Policy</a>
-              <a href="#" className="hover:text-indigo-600 transition">Terms of Service</a>
+            <div>
+              <h5 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-xs">Platform</h5>
+              <ul className="space-y-4 text-slate-500 font-light">
+                <li><a href="#" className="hover:text-indigo-600 transition">Neural Insights</a></li>
+                <li><a href="#" className="hover:text-indigo-600 transition">Salary Predictor</a></li>
+                <li><a href="#" className="hover:text-indigo-600 transition">Talent Mapping</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-xs">Company</h5>
+              <ul className="space-y-4 text-slate-500 font-light">
+                <li><a href="#" className="hover:text-indigo-600 transition">Architecture</a></li>
+                <li><a href="#" className="hover:text-indigo-600 transition">Compliance</a></li>
+                <li><a href="#" className="hover:text-indigo-600 transition">Privacy Protocol</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-medium text-slate-400">
+            <p>© 2026 HR-Pulse Neural Platforms. All rights reserved.</p>
+            <div className="flex gap-10">
+              <a href="#" className="hover:text-indigo-600 transition">Legal</a>
+              <a href="#" className="hover:text-indigo-600 transition">Security</a>
               <a href="#" className="hover:text-indigo-600 transition">Contact</a>
             </div>
-            <p className="text-slate-400 text-sm">© 2026 HR-Pulse. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -20,7 +20,7 @@ export default function AuthPage() {
     setLoading(true);
     const BASE_URL = "http://127.0.0.1:8000"; // URl fastapi
 
-    const endpoint = isRegister ? `${BASE_URL}/register` : `${BASE_URL}/login`; 
+    const endpoint = isRegister ? `${BASE_URL}/register` : `${BASE_URL}/login`;
 
 
     // ✅ Ici on définit le payload
@@ -33,7 +33,7 @@ export default function AuthPage() {
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
@@ -56,14 +56,14 @@ export default function AuthPage() {
   };
 
   return (
-    
+
     <div className="min-h-screen flex items-center justify-center bg-slate-50 relative overflow-hidden p-4">
-      
+
       {/* Forme violette en arrière-plan (Style HR-Pulse) */}
       <div className="absolute top-0 right-0-z-0 w-1/2 h-full bg-indigo-100 rounded-bl-[300px] opacity-60 hidden md:block"></div>
 
       <div className="z-10 bg-white shadow-2xl rounded-3xl flex max-w-4xl w-full overflow-hidden">
-        
+
         {/* Côté Gauche : Formulaire */}
         <div className="w-full md:w-1/2 p-8 md:p-12">
           <div className="flex items-center gap-2 mb-8">
@@ -81,27 +81,27 @@ export default function AuthPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Email</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 required
                 className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition text-slate-900"
                 placeholder="rh@exemple.com"
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-slate-400 uppercase mb-1">Mot de passe</label>
-              <input 
-                type="password" 
+              <input
+                type="password"
                 required
                 className="w-full px-4 py-3 rounded-xl bg-slate-100 border-none focus:ring-2 focus:ring-indigo-500 transition text-slate-900"
                 placeholder="••••••••"
-                onChange={(e) => setFormData({...formData, password: e.target.value})}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               />
             </div>
 
-            <button 
+            <button
               type="submit"
               disabled={loading}
               className="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition transform hover:-translate-y-0.5"
@@ -111,9 +111,9 @@ export default function AuthPage() {
           </form>
 
           <p className="mt-8 text-center text-sm text-slate-500">
-            {isRegister ? "Déjà un compte ?" : "Pas encore de compte ?"} 
-            <button 
-              onClick={() => setIsRegister(!isRegister)} 
+            {isRegister ? "Déjà un compte ?" : "Pas encore de compte ?"}
+            <button
+              onClick={() => setIsRegister(!isRegister)}
               className="ml-2 text-indigo-600 font-bold hover:underline"
             >
               {isRegister ? "Se connecter" : "S'inscrire"}
@@ -123,16 +123,16 @@ export default function AuthPage() {
 
         {/* Côté Droit : Visuel */}
         <div className="hidden md:flex md:w-1/2 bg-indigo-50 items-center justify-center p-12 relative text-center">
-          
+
           <div className="z-10">
-            <img 
-                src="/illustration-placeholder1.png" 
-                alt="Recruitment Illustration" 
-                className="w-full h-auto object-contain"
-              />
-             <p className="text-indigo-400 text-sm mt-2 max-w-[200px] mx-auto italic">
-               Transformer les données brutes en décisions intelligentes.
-             </p>
+            <img
+              src="/illustration-placeholder1.png"
+              alt="Recruitment Illustration"
+              className="w-full h-auto object-contain"
+            />
+            <p className="text-indigo-400 text-sm mt-2 max-w-[200px] mx-auto italic">
+              Transformer les données brutes en décisions intelligentes.
+            </p>
           </div>
         </div>
       </div>
