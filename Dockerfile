@@ -2,11 +2,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY hr_pulse/package.json hr_pulse/package-lock.json ./    # ← ajoute hr_pulse/
 
 RUN npm install
 
-COPY . .
+COPY hr_pulse/ .
 
 RUN npm run build
 

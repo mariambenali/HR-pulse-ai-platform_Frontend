@@ -164,7 +164,7 @@ export default function HomePage() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-6 h-6 rounded-full bg-indigo-500 mt-1 flex-shrink-0"></div>
-                  <p className="text-indigo-100 italic">"HR-Pulse allowed us to reduce our screening time by 60% while improving candidate quality."</p>
+                  <p className="text-indigo-100 italic"> "HR-Pulse allowed us to reduce our screening time by 60% while improving candidate quality."</p>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="w-6 h-6 rounded-full bg-indigo-500 mt-1 flex-shrink-0"></div>
